@@ -1,0 +1,2 @@
+class MeetUpType < ApplicationRecord
+end
