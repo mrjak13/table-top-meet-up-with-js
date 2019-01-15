@@ -3,6 +3,7 @@ class CreateUserGames < ActiveRecord::Migration[5.2]
     create_table :usergames do |t|
       t.integer :user_id
       t.integer :board_game_id
+      t.boolean :favorite
 
       t.timestamps
     end
