@@ -1,4 +1,4 @@
-class CreateUsergames < ActiveRecord::Migration[5.2]
+class CreateUserGames < ActiveRecord::Migration[5.2]
   def change
     create_table :usergames do |t|
       t.integer :user_id
