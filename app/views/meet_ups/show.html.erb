@@ -1,1 +1,8 @@
 <h1><%= @meet_up.name %> page</h1>
+
+	Players attending: <%= @meet_up.users.count %><br>
+	Location: <%= link_to @meet_up.location.name, location_path(@meet_up.location) %><br>
+	Meet Up Type: <%= link_to @meet_up.meet_up_type.name, meet_up_type_path(@meet_up.meet_up_type) %><br>
+
+	<br>
+	<%= button_to "add to my meet ups", meet_up_user_path(@meet_up, @current_user), method: "put" %>

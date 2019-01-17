@@ -2,6 +2,6 @@
 
 <ul>
 	<% @meet_ups.each do |meet_up| %>
-		<li>Name: <%= meet_up.name %></li><br>
+		<li><%= link_to meet_up.name, meet_up_path(meet_up) %></li><br>
 	<% end %>
 </ul>
