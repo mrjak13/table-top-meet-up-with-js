@@ -2,6 +2,6 @@
 
 <ul>
 	<% @games.each do |game| %>
-		<li>Name: <%= game.name %></li><br>
+		<%= link_to game.name, game_path(game) %><br><br>
 	<% end %>
 </ul>
