@@ -1,2 +1,10 @@
 <h1>Everything at <%= @location.name %></h1>
 
+<%= @location.address %>
+
+<ul>
+	<h3>Meet ups</h3>	
+	<% @location.meet_ups.each do |meet_up| %>
+		<li><%= link_to meet_up.name, meet_up_path(meet_up) %></li>
+	<% end %>
+</ul>
