@@ -9,7 +9,11 @@ Rails.application.routes.draw do
 
   resources :meet_up_types
   resources :locations
-  resources :meet_ups
+  
+  resources :meet_ups do
+    resources :users, only: [:update]
+  end
+
   resources :games do
   	  resources :user_games, only: [:create, :update, :destroy] 
   	end
