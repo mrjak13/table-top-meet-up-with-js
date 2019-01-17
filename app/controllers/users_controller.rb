@@ -11,6 +11,15 @@ class UsersController < ApplicationController
 	end
 
 	def create
+		@user = User.create(user_params)
+
+		if @user.valid?
+			session[:user_id] = @user.id
+			redirect_to user_path(@user)
+		else
+			raise @user.errors.full_messages.inspect
+			redirect_to signup_path
+		end
 	end
 
 	def edit
@@ -20,5 +29,11 @@ class UsersController < ApplicationController
 	end
 
 	def destroy
+	end
+
+	private
+
+	def user_params
+		params.require(:users).permit(:name, :email, :password)
 	end
 end
