@@ -1,5 +1,7 @@
 Rails.application.routes.draw do
 
+  # resources :user_games, only: [:create, :update, :destroy] 
+
   # session routes
   get '/login' => 'sessions#new'
   post '/login' => 'sessions#create'
@@ -8,7 +10,10 @@ Rails.application.routes.draw do
   resources :meet_up_types
   resources :locations
   resources :meet_ups
-  resources :games
+  resources :games do
+  	  resources :user_games, only: [:create, :update, :destroy] 
+  	end
+
 
 
   resources :users, except: [:new, :create]
