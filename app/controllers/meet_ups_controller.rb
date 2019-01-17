@@ -4,6 +4,7 @@ class MeetUpsController < ApplicationController
 	end
 
 	def show
+		current_user
 		@meet_up = MeetUp.find(params[:id])
 	end
 
