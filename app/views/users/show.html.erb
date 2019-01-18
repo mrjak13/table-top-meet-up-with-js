@@ -16,7 +16,7 @@
 		<h4><%= link_to meet_up.name, meet_up_path(meet_up) %><h4>
 			<ul>
 				<li>Where: <%= link_to meet_up.location.name, location_path(meet_up.location) %></li>				
-				<li>When: <%= meet_up.date.strftime("%b %e %Y") %> at <%= meet_up.time.strftime("%l:%M %P") %></li>
+				<li>When: <%= meet_up.date.strftime("%b. %e, %Y") %> at <%= meet_up.time.strftime("%l:%M %P") %></li>
 			</ul>
 	<% end %>	
 </ul>

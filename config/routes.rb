@@ -1,7 +1,5 @@
 Rails.application.routes.draw do
-
-  # resources :user_games, only: [:create, :update, :destroy] 
-
+ 
   # session routes
   get '/login' => 'sessions#new'
   post '/login' => 'sessions#create'
@@ -18,10 +16,9 @@ Rails.application.routes.draw do
   	  resources :user_games, only: [:create, :update, :destroy] 
   	end
 
-
-
   resources :users, except: [:new, :create]
   get '/signup' => 'users#new'
   post '/signup' => 'users#create'
+
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 end
