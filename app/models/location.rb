@@ -11,9 +11,10 @@ class Location < ApplicationRecord
 	scope :near_me, -> (zip) { where("zip = ?", zip) }
 
 	def address
-		"#{self.address_1} " + "#{self.address_2}, " +
+		"#{self.address_1} " +
 		"#{self.city}, " +
 		"#{self.state}, " +
-		"#{self.zip}" 
+		"#{self.zip}" + "  " +
+		"#{self.address_2}"
 	end
 end
