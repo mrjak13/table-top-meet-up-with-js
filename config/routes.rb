@@ -6,7 +6,10 @@ Rails.application.routes.draw do
   delete '/logout' => 'sessions#destroy'  
 
   resources :meet_up_types
-  resources :locations
+
+  resources :locations do 
+    resources :meet_ups, only: [:new, :create]
+  end
   
   resources :meet_ups do
     resources :users, only: [:update]

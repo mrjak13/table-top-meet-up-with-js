@@ -7,4 +7,7 @@ class MeetUp < ApplicationRecord
 
 	# has_many :meet_up_games
 	# has_many :games, through: meet_ups
+
+	validates :name, :date, :time, presence: true
+
 end

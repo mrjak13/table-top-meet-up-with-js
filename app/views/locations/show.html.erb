@@ -8,3 +8,5 @@
 		<li><%= link_to meet_up.name, meet_up_path(meet_up) %></li>
 	<% end %>
 </ul>
+
+<%= button_to "Create meet up",  new_location_meet_up_path(@location), method: "get" %>
