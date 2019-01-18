@@ -1,1 +1,11 @@
 <h1>Create new Meet Up here</h1>
+
+<%= form_for MeetUp.new, url: location_meet_ups_path(@location) do |f| %>
+	Name: <%= f.text_field :name %><br>
+	Where: <%= f.collection_select :location_id, Location.all, :id, :name, {:selected => @location.name}, disabled: true %><br>
+	Meet up type: <%= f.collection_select :meet_up_type_id, @meet_up_types, :id, :name %><br>
+	Date: <%= f.date_select :date, order: [:month, :day, :year] %><br>
+	Time: <%= f.time_select :time, {minute_step: 15, ampm: true} %><br><br>	
+	<%= f.submit %>
+
+<% end %>
