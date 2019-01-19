@@ -11,6 +11,12 @@ class MeetUpTypesController < ApplicationController
 	end
 
 	def create
+		type = MeetUpType.create(meet_up_type_params)
+		if type.valid?
+			redirect_to meet_up_type_path(type)
+		else
+			redirect_to new_meet_up_type_path
+		end
 	end
 
 	def edit
@@ -21,5 +27,11 @@ class MeetUpTypesController < ApplicationController
 	end
 
 	def destroy
+	end
+
+	private
+
+	def meet_up_type_params
+		params.require(:meet_up_type).permit(:name, :description)
 	end
 end
