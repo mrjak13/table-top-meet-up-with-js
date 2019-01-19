@@ -4,4 +4,7 @@ class MeetUpType < ApplicationRecord
 
 	validates :name, uniqueness: true
 	validates :name, :description, presence: true
+
+	# add method to show what game is most popular in each type?
+	# add method to show what location is most popular in each type?
 end
