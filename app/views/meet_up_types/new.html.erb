@@ -1,1 +1,7 @@
 <h1>New Meet up Type here!</h1>
+
+<%= form_for MeetUpType.new do |f| %>
+	Name: <%= f.text_field :name %><br><br>
+	Description:<br><%= f.text_area :description %><br><br>
+	<%= f.submit "Create meet up type" %>
+<% end %>
