@@ -1,26 +1,32 @@
-<h1>Hi <%= @user.name %>!  This is your page!</h1>
+<h1 class="title">Hi <%= @user.name %>!  This is your page!</h1>
 
+<div class="columns">
+	<div class="column">		
+		<p class="subtitle">My Games</p>
+		<ul>
+			<% @user.games.each do |game| %>
+				<li><%= link_to game.name, game_path(game) %></li>
+			<% end %>	
+		</ul>
+		<%= button_to "add game", games_path, method: "get" %>
+	</div>
 
-<h3>My Games</h3>
-<ul>
-	<% @user.games.each do |game| %>
-		<li><%= link_to game.name, game_path(game) %></li>
-	<% end %>	
-</ul>
-
-<%= button_to "add game", games_path, method: "get" %>
-
-<h3>My Meet ups</h3>
-<ul>
-	<% @user.meet_ups.each do |meet_up| %>
-		<h4><%= link_to meet_up.name, meet_up_path(meet_up) %><h4>
-			<ul>
-				<li>Where: <%= link_to meet_up.location.name, location_path(meet_up.location) %></li>				
-				<li>When: <%= meet_up.date.strftime("%b. %e, %Y") %> at <%= meet_up.time.strftime("%l:%M %P") %></li>
-			</ul>
-	<% end %>	
-</ul>
-
-<%= button_to "add meet up", meet_ups_path, method: "get" %><br>
-
-<%= button_to "Log out", logout_path, method: "delete" %>
+	<div class="column">
+		<p class="subtitle">My Meet ups</p>
+		<div class="columns">			
+		<ul>
+			<% @user.meet_ups.each do |meet_up| %>
+				<div class="column">					
+				<h4><%= link_to meet_up.name, meet_up_path(meet_up) %><h4>
+					<ul>
+						<li>Where: <%= link_to meet_up.location.name, location_path(meet_up.location) %></li>				
+						<li>When: <%= meet_up.date.strftime("%b. %e, %Y") %> at <%= meet_up.time.strftime("%l:%M %P") %></li>
+					</ul>
+				</div>
+			<% end %>	
+		</ul>
+		</div>
+		<%= button_to "add meet up", meet_ups_path, method: "get" %><br>
+	</div>
+</div>
+		<%= button_to "Log out", logout_path, method: "delete" %>
