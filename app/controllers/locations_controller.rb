@@ -10,7 +10,7 @@ class LocationsController < ApplicationController
 	def new
 	end
 
-	def create
+	def create		
 		location = Location.create(location_params)
 		if location.valid?
 			redirect_to location_path(location)		

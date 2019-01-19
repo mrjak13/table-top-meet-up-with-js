@@ -9,18 +9,20 @@ class MeetUpsController < ApplicationController
 	end
 
 	def new
-		@meet_up_types = MeetUpType.all
-		if params[:location_id]
-			@location = Location.find(params[:location_id])
-		end
+		if params[:location_id].present?		
+			@games = Game.all
+			@meet_up_types = MeetUpType.all		
+			@location = Location.find(params[:location_id])	
+		else
+			redirect_to user_path(current_user)
+		end	
 	end
 
-	def create
+	def create		
 		create_date_time
 		location = Location.find(params[:location_id])
 		meet_up = MeetUp.new(meet_up_params)
-		meet_up.update(date: @date_time, time: @date_time, location_id: location.id)
-
+		meet_up.update(date: @date_time, time: @date_time, location_id: location.id)		
 		if meet_up.valid?			
 			redirect_to meet_up_path(meet_up)
 		else
@@ -44,7 +46,8 @@ class MeetUpsController < ApplicationController
 		params.require(:meet_up).permit(
 			:name,
 			:meet_up_type_id,
-			:location_id
+			:location_id, 
+			:game_id
 			)
 	end
 
