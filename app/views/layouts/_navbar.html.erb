@@ -14,40 +14,33 @@
   <div id="navbarBasicExample" class="navbar-menu">
     <div class="navbar-start">
 
-      <%= link_to "Meet ups", meet_ups_path, {class: "navbar-item"} %>
-      <%= link_to "Games", games_path, {class: "navbar-item"} %>  
-      <%= link_to "Locations", locations_path, {class: "navbar-item"} %>  
-
       <div class="navbar-item has-dropdown is-hoverable">
         <a class="navbar-link">
-          More
+          Meet ups
         </a>
 
         <div class="navbar-dropdown">
-          <a class="navbar-item">
-            About
-          </a>
-          <a class="navbar-item">
-            Jobs
-          </a>
-          <a class="navbar-item">
-            Contact
-          </a>
-          <hr class="navbar-divider">
-          <a class="navbar-item">
-            Report an issue
-          </a>
+          <%= link_to "All", meet_ups_path, {class: "navbar-item"}%>
+          <%= link_to "Type", meet_up_types_path, {class: "navbar-item"} %>        
         </div>
       </div>
+      <!-- <%= link_to "Meet ups", meet_ups_path, {class: "navbar-item"} %> -->
+      <%= link_to "Games", games_path, {class: "navbar-item"} %>  
+      <%= link_to "Locations", locations_path, {class: "navbar-item"} %>  
     </div>
 
     <div class="navbar-end">
       <div class="navbar-item">
         <div class="buttons">
-          <%= link_to "Sign up", signup_path, {class: "button is-primary"} %>          
-          <%= link_to "Log in", login_path, {class: "button is-light"} %>
+          <% if session[:user_id].present? %>
+            <%= button_to("Log out", logout_path, method: :delete, class: "button is-dark") %>            
+          <% else %>         
+            <%= link_to "Sign up", signup_path, {class: "button is-primary"} %>
+            <%= link_to "Log in", login_path, {class: "button is-light"} %>
+          <% end %>
         </div>
       </div>
-    </div>
+    </div>    
   </div>
 </nav>
+<br>
