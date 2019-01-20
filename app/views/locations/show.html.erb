@@ -1,12 +1,12 @@
-<h1>Everything at <%= @location.name %></h1>
+<h1 class="title"><%= @location.name %></h1>
 
-<%= @location.address %>
+<p class="subtitle is-6"><%= @location.address %></p>
 
 <ul>
-	<h3>Meet ups</h3>	
+	<p class="title is-4">Meet ups</p>
 	<% @location.meet_ups.each do |meet_up| %>
-		<li><%= link_to meet_up.name, meet_up_path(meet_up) %></li>
+		<li class="subtitle"><%= link_to meet_up.name, meet_up_path(meet_up) %></li>
 	<% end %>
-</ul>
+</ul><br>
 
-<%= button_to "Create meet up",  new_location_meet_up_path(@location), method: "get" %>
+<%= button_to("Create meet up",  new_location_meet_up_path(@location), method: "get", class: "button") %>

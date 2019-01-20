@@ -1,6 +1,7 @@
-<h1>This is the page for <%= @game.name %>!</h1>
+<h1 class="title"><%= @game.name %></h1>
 
-<h3>Info</h3>
+<br>
+<p class="subtitle">Info:</p>
 <%= @game.description %>
 
 <br>
@@ -12,4 +13,4 @@ Contains mature content: <%= @game.mature_content %><br><br>
 
 
 
-<%= button_to "add to my games", game_user_games_path(@game) %>
+<%= button_to("add to my games", game_user_games_path(@game), class: "button") %>

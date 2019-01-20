@@ -1,7 +1,7 @@
-<h1>All Locations live here!</h1>
+<h1 class="title">Locations</h1>
 
 <ul>
 	<% @locations.each do |location| %>
-		<li><%= link_to location.name, location_path(location) %></li><br>
+		<li class="subtitle"><%= link_to location.name, location_path(location) %></li>
 	<% end %>
 </ul>

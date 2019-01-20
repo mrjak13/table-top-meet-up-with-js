@@ -1,7 +1,7 @@
-<h1>All Meet Ups live here!</h1>
+<h1 class="title">Meet Ups</h1>
 
 <ul>
 	<% @meet_ups.each do |meet_up| %>
-		<li><%= link_to meet_up.name, meet_up_path(meet_up) %></li><br>
+		<li class="subtitle"><%= link_to meet_up.name, meet_up_path(meet_up) %></li>
 	<% end %>
 </ul>

@@ -1,6 +1,6 @@
-<h1><%= @meet_up.name %> page</h1>
+<h1 class="title"><%= @meet_up.name %></h1>
 
-<h3>We'll be playing <%= @meet_up.game.name %></h3>
+<p class="subtitle">We'll be playing <strong><%= link_to @meet_up.game.name, game_path(@meet_up.game) %></strong></p>
 
 	Players attending: <%= @meet_up.users.count %><br>
 	Where: <%= link_to @meet_up.location.name, location_path(@meet_up.location) %><br>
@@ -8,4 +8,4 @@
 	When: <%= @meet_up.date.strftime("%b. %e, %Y") %> at <%= @meet_up.time.strftime("%l:%M %P") %>
 
 	<br><br>
-	<%= button_to "add to my meet ups", meet_up_user_path(@meet_up, @current_user), method: "put" %>
+	<%= button_to("add to my meet ups", meet_up_user_path(@meet_up, @current_user), method: "put", class: "button") %>
