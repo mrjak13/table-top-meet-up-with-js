@@ -8,7 +8,7 @@ class MeetUpsController < ApplicationController
 		@meet_up = MeetUp.find(params[:id])
 	end
 
-	def new
+	def new		
 		if params[:location_id].present?		
 			@games = Game.all
 			@meet_up_types = MeetUpType.all		
