@@ -1,5 +1,8 @@
 Rails.application.routes.draw do
  
+  get 'user_meet_ups/create'
+  get 'user_meet_ups/update'
+  get 'user_meet_ups/destroy'
   # session routes
   get '/login' => 'sessions#new'
   post '/login' => 'sessions#create'
@@ -12,7 +15,7 @@ Rails.application.routes.draw do
   end
   
   resources :meet_ups do
-    resources :users, only: [:update]
+    resources :user_meet_ups, only: [:create, :update, :destroy]
   end
 
   resources :games do
