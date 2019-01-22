@@ -1,6 +1,7 @@
 class UserGamesController < ApplicationController
+  before_action :must_be_logged_in
   	def create  	
-  		game = Game.find(params[:game_id])  	
+      game = Game.find(params[:game_id])    
   		current_user.add_game(game)
 
   		redirect_to game_path(game)

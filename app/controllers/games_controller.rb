@@ -1,4 +1,6 @@
 class GamesController < ApplicationController
+	before_action :must_be_logged_in, except: [:index]
+
 	def index
 		@games = Game.all
 	end
@@ -10,6 +12,7 @@ class GamesController < ApplicationController
 	end
 
 	def new
+		@game = Game.new
 	end
 
 	def create
@@ -17,7 +20,7 @@ class GamesController < ApplicationController
 		if @game.valid?
 			redirect_to game_path(@game)
 		else
-			redirect_to new_game_path
+			render new_game_path
 		end
 	end
 

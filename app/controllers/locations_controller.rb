@@ -1,4 +1,6 @@
 class LocationsController < ApplicationController
+	before_action :must_be_logged_in, except: [:index]
+
 	def index
 		@locations = Location.all
 	end
@@ -15,7 +17,6 @@ class LocationsController < ApplicationController
 		if location.valid?
 			redirect_to location_path(location)		
 		else
-			raise location.errors.full_messages.inspect
 			redirect_to new_location_path
 		end
 	end

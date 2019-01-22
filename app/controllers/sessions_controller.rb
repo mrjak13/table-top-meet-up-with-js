@@ -1,4 +1,7 @@
 class SessionsController < ApplicationController
+  before_action :must_be_logged_in, only: [:destroy]
+  before_action :cant_be_logged_in, only: [:new, :create]
+
   def new
   end
 

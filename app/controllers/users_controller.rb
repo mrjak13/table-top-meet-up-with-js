@@ -1,4 +1,7 @@
 class UsersController < ApplicationController
+	before_action :must_be_logged_in, except: [:new, :create]
+	before_action :cant_be_logged_in, only: [:new, :create]
+
 	def index
 		@users = User.all
 	end
@@ -12,12 +15,10 @@ class UsersController < ApplicationController
 
 	def create
 		@user = User.create(user_params)
-
 		if @user.valid?
 			session[:user_id] = @user.id
 			redirect_to user_path(@user)
 		else
-			raise @user.errors.full_messages.inspect
 			redirect_to signup_path
 		end
 	end

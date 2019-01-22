@@ -1,9 +1,10 @@
 <h1 class="title">Create New Game</h1>
 
 <div class="columns">
-	<div class="column is-one-third">		
+	<div class="column is-one-third">
+		<%= @game.errors.full_messages.first if @game.errors.any? %>		
 		<div class="field ">
-			<%= form_for Game.new do |f| %>
+			<%= form_for @game do |f| %>
 				<label class="label">Name</label>
 				<div class="control">
 					<%= f.text_field :name, placeholder:"Monopoly", class: "input" %>
