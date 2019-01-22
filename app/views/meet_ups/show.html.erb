@@ -8,4 +8,9 @@
 	When: <%= @meet_up.date.strftime("%b. %e, %Y") %> at <%= @meet_up.time.strftime("%l:%M %P") %>
 
 	<br><br>
-	<%= button_to("add to my meet ups", meet_up_user_meet_ups_path(@meet_up), method: "put", class: "button") %>
+
+	<% if @current_user.meet_ups.include?(@meet_up) %>
+		<%= button_to("remove from my meet ups", user_meet_up_path(@user_meet_up), method: :delete, class: "button is-danger") %>
+	<% else %>
+		<%= button_to("add to my meet ups", meet_up_user_meet_ups_path(@meet_up), method: "post", class: "button") %>
+	<% end %>

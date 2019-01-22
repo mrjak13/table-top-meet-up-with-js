@@ -6,6 +6,7 @@ class MeetUpsController < ApplicationController
 	def show
 		current_user
 		@meet_up = MeetUp.find(params[:id])
+		@user_meet_up = UserMeetUp.find_by(user_id: @current_user, meet_up_id: @meet_up)
 	end
 
 	def new		
