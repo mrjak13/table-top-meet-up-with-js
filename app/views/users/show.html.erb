@@ -5,7 +5,11 @@
 		<p class="subtitle">My Games</p>
 		<ul>
 			<% @user.games.each do |game| %>
-				<li><%= link_to game.name, game_path(game) %></li>
+				<li><%= link_to game.name, game_path(game) %>
+					<% if UserGame.find_by(user_id: @user.id, game_id: game.id).favorite == true %>
+						<i class="fas fa-star" style="color:gold"></i>
+					<% end %>
+				</li>
 			<% end %><br>	
 		</ul>
 		<%= button_to("add game", games_path, method: "get", class: "button") %>

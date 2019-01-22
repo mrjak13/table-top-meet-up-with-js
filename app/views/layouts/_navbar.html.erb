@@ -13,8 +13,9 @@
 
   <div id="navbarBasicExample" class="navbar-menu">
     <div class="navbar-start">
-      
-      <%= link_to "Profile", user_path(session[:user_id]),{class: "navbar-item"} %>
+      <% if session[:user_id].present? %>
+        <%= link_to "Profile", user_path(session[:user_id]),{class: "navbar-item"} %>
+      <% end %>
       <div class="navbar-item has-dropdown is-hoverable">
         <a class="navbar-link">Meet ups</a>
           <div class="navbar-dropdown">
