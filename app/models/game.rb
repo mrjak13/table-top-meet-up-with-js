@@ -6,6 +6,7 @@ class Game < ApplicationRecord
 
 	validates :name, :min_players, :max_players, :description, :play_time, presence: true
 	validates :name, uniqueness: true
+	validates :min_players, :max_players, numericality: { only_integer: true }
 
 
 	def players
