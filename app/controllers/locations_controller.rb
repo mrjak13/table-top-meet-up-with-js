@@ -2,7 +2,17 @@ class LocationsController < ApplicationController
 	before_action :must_be_logged_in, except: [:index]
 
 	def index
-		@locations = Location.all
+		# raise.inspect
+		if params[:zip].present?
+			@locations = Location.near_me(params[:zip])
+			# flash message lasts an extra click
+			# if @locations.empty?
+			# 	flash[:message] = "No locations with that zip"
+			# 	params.delete :zip
+			# end
+		else
+			@locations = Location.all
+		end
 	end
 
 	def show
@@ -45,4 +55,5 @@ class LocationsController < ApplicationController
 			:zip
 			)
 	end
+
 end
