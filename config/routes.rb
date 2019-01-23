@@ -23,7 +23,7 @@ Rails.application.routes.draw do
 
   resources :user_games, only: [:update, :destroy]
 
-  resources :users, except: [:new, :create]
+  resources :users, except: [:create]
   get '/signup' => 'users#new'
   post '/signup' => 'users#create'
 

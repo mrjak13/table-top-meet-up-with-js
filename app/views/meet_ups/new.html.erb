@@ -1,61 +1,63 @@
 <h1 class="title">Create new Meet Up</h1>
 
-<%= form_for MeetUp.new, url: location_meet_ups_path(@location) do |f| %>
-	
-	<div class="columns">
-		<div class="control" >
-			<div class="column">		
-				<div class="field" >
-					<label class="label">Name</label>
-					<%= f.text_field :name, placeholder:"name", class: "input" %>
-				</div>
+<div class="columns">
+		<div class="control">
+	<div class="column">
 
-				<div class="field">
-					<label class= "label">Game</label>
-					<div class="select" >			
-						<%= f.collection_select :game_id, @games, :id, :name, class: "input" %>		
-					</div>
-				</div>
+		<%= render partial: "/layouts/error", locals: {error_object: @meet_up} %>
+		
+			<%= form_for @meet_up, url: location_meet_ups_path(@location) do |f| %>
+			<div class="field" >
+				<label class="label">Name</label>
+				<%= f.text_field :name, placeholder:"name", class: "input" %>
+			</div>
 
-
-				<div class="field">
-					<label class= "label">Where</label>
-					<div class="select" >	
-						<%= f.collection_select :location_id, Location.all, :id, :name, {selected: @location.id}, disabled: true, class: "input" %>
-					</div>
-				</div>
-
-				<div class="fied">	
-					<label class= "label">Meet up type</label>
-					<div class="select" >	
-						<%= f.collection_select :meet_up_type_id, @meet_up_types, :id, :name, class: "input" %>
-					</div>
+			<div class="field">
+				<label class= "label">Game</label>
+				<div class="select" >			
+					<%= f.collection_select :game_id, @games, :id, :name, class: "input" %>		
 				</div>
 			</div>
 
-			<div class="column">
-				<div class="columns">
-					<div class="column">
-						<label class= "label">Date</label>
-						<div class="select" >	
-							<%= f.date_select :date, order: [:month, :day, :year], class: "input" %>
-						</div>
-					</div>
 
-					<div class=" column">
-						<label class= "label">Time</label>
-						<div class="select" >	
-							<%= f.time_select :time, {minute_step: 15, ampm: true} %>
-						</div>
-					</div>
+			<div class="field">
+				<label class= "label">Where</label>
+				<div class="select" >	
+					<%= f.collection_select :location_id, Location.all, :id, :name, {selected: @location.id}, disabled: true, class: "input" %>
 				</div>
 			</div>
 
-			<br><br><br>
-			<div class="column">	
-				<%= f.submit 'Create Meet Up', class: "button" %>
-				<% end %>
+			<div class="field">	
+				<label class= "label">Meet up type</label>
+				<div class="select" >	
+					<%= f.collection_select :meet_up_type_id, @meet_up_types, :id, :name, class: "input" %>
+				</div>
 			</div>
-			
 		</div>
+
+		<div class="column">
+			<div class="columns">
+				<div class="column">
+					<label class= "label">Date</label>
+					<div class="select" >	
+						<%= f.date_select :date, order: [:month, :day, :year], class: "input" %>
+					</div>
+				</div>
+
+				<div class=" column">
+					<label class= "label">Time</label>
+					<div class="select" >	
+						<%= f.time_select :time, {minute_step: 15, ampm: true} %>
+					</div>
+				</div>
+			</div>
+		</div>
+
+		<br><br><br>
+		<div class="column">	
+			<%= f.submit 'Create Meet Up', class: "button" %>
+			<% end %>
+		</div>
+		
 	</div>
+</div>

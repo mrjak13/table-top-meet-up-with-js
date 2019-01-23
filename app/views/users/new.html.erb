@@ -1,8 +1,10 @@
 <h1 class="title is-4">Sign Up</h1>
 
-
 <div class="columns">
-	<div class="column is-one-third">		
+	<div class="column is-one-third">
+
+		<%= render partial: "/layouts/error", locals: {error_object: @user} %>
+			
 		<div class="field ">
 			<%= form_for :users do |f| %>
 				<label class="label">Name</label>
