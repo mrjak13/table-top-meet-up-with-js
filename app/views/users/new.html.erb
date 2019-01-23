@@ -6,7 +6,7 @@
 		<%= render partial: "/layouts/error", locals: {error_object: @user} %>
 			
 		<div class="field ">
-			<%= form_for :users do |f| %>
+			<%= form_for @user do |f| %>
 				<label class="label">Name</label>
 				<div class="control has-icons-left">
 					<%= f.text_field :name, placeholder:"name", class: "input" %>					

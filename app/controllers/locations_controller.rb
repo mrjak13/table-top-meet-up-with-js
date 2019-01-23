@@ -2,7 +2,6 @@ class LocationsController < ApplicationController
 	before_action :must_be_logged_in, except: [:index]
 
 	def index
-		# raise.inspect
 		if params[:zip].present?
 			@locations = Location.near_me(params[:zip])
 			# flash message lasts an extra click
