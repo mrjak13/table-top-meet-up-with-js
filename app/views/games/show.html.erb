@@ -15,8 +15,10 @@
 <br>
 
 Play Time: <%= @game.play_time %><br>
-<%= @game.players %> players<br>
-Contains mature content: <%= @game.mature_content %><br><br>
+<%= @game.players %> players<br><br>
+<% if @game.mature_content%>
+	<p class="has-text-danger"><strong>Warning!</strong> Contains mature content!</p>
+<% end %><br>
 
 
 <% if @current_user.games.include?(@game) %>
