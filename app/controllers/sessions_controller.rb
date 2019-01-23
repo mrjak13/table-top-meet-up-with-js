@@ -5,10 +5,19 @@ class SessionsController < ApplicationController
   def new
   end
 
-  def create  	
-  	if params[:email] != "" && params[:password] != ""
+  def create 
+     
+  	if auth
+      user = User.find_or_create_by(email: auth[:info][:email]) do |u|
+        u.name = auth[:info][:first_name]
+        u.email = auth[:info][:email]
+        u.password = Digest::SHA256.hexdigest('a secret key')
+      end      
+      session[:user_id] = user.id
+      redirect_to user_path(user)
+  	elsif params[:email] != "" && params[:password] != ""
   		user = User.find_by(email: params[:email])
-  		if user.authenticate(params[:password])
+  		if user && user.authenticate(params[:password])
   			session[:user_id] = user.id
   			redirect_to user_path(user)
   		else
@@ -24,5 +33,11 @@ class SessionsController < ApplicationController
   def destroy  	
   	session.delete :user_id
   	redirect_to login_path
+  end
+
+  private
+
+  def auth
+    request.env['omniauth.auth']
   end
 end
