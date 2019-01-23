@@ -1,9 +1,12 @@
 <h1 class="title">Create new Location</h1>
 
 <div class="columns">
-	<div class="column is-one-third">		
+	<div class="column is-one-third">
+
+		<%= render partial: "/layouts/error", locals: {error_object: @location} %>	
+
 		<div class="field ">
-			<%= form_for Location.new do |f| %>
+			<%= form_for @location do |f| %>
 				<label class="label">Name</label>
 				<div class="control">
 					<%= f.text_field :name, placeholder:"Comics R' Us", class: "input" %>					

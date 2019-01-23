@@ -4,6 +4,7 @@ class Location < ApplicationRecord
 
 	validates :name, :address_1, :city, :state, :zip, presence: true
 	validates :name, uniqueness: true
+	validates :state, length: { is: 2 }
 	validates :zip, length: { is: 5 }
 
 

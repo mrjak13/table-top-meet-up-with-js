@@ -10,14 +10,15 @@ class LocationsController < ApplicationController
 	end
 
 	def new
+		@location= Location.new
 	end
 
 	def create		
-		location = Location.create(location_params)
-		if location.valid?
-			redirect_to location_path(location)		
+		@location = Location.create(location_params)
+		if @location.valid?
+			redirect_to location_path(@location)		
 		else
-			redirect_to new_location_path
+			render new_location_path
 		end
 	end
 
