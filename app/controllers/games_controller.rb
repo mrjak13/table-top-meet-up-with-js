@@ -2,7 +2,12 @@ class GamesController < ApplicationController
 	before_action :must_be_logged_in, except: [:index]
 
 	def index
-		@games = Game.all
+		current_user
+		if params[:user_id].present?
+			@games = current_user.games
+		else
+			@games = Game.all
+		end
 	end
 
 	def show
