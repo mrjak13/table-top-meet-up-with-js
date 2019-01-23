@@ -2,6 +2,12 @@
 
 <ul>
 	<% @games.each do |game| %>
-		<li class="subtitle"><%= link_to game.name, game_path(game) %></li>
+			<% if @current_user && UserGame.find_by(user_id: @current_user.id, game_id: game.id) && UserGame.find_by(user_id: @current_user.id, game_id: game.id).favorite == true %>
+				<li class="subtitle"><%= link_to game.name, game_path(game) %>
+					<i class="fas fa-star" style="color:gold"></i>
+				</li>
+			<% else %>
+				<li class="subtitle"><%= link_to game.name, game_path(game) %></li>
+			<% end %>	
 	<% end %>
 </ul>
