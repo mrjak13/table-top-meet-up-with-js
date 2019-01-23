@@ -1,9 +1,12 @@
-<h1 class="title">Create new Meet up Type</h1>
 
 <div class="columns">
-	<div class="column is-one-third">		
+	<div class="column is-one-third">
+<h1 class="title">Create new Meet up Type</h1>
+
+		<%= render partial: "/layouts/error", locals: {error_object: @meet_up_type} %>
+		
 		<div class="field ">
-			<%= form_for MeetUpType.new do |f| %>
+			<%= form_for @meet_up_type do |f| %>
 				<label class="label">Name</label>
 				<div class="control">
 					<%= f.text_field :name, placeholder:"Beginner", class: "input" %>

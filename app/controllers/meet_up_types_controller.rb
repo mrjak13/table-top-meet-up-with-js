@@ -9,14 +9,15 @@ class MeetUpTypesController < ApplicationController
 	end
 
 	def new
+		@meet_up_type = MeetUpType.new
 	end
 
 	def create
-		type = MeetUpType.create(meet_up_type_params)
-		if type.valid?
-			redirect_to meet_up_type_path(type)
+		@meet_up_type = MeetUpType.create(meet_up_type_params)
+		if @meet_up_type.valid?
+			redirect_to meet_up_type_path(@meet_up_type)
 		else
-			redirect_to new_meet_up_type_path
+			render new_meet_up_type_path
 		end
 	end
 
