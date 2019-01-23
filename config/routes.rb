@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+
+  get '/auth/google_oauth2/callback' => 'sessions#create'
  
   # session routes
   get '/login' => 'sessions#new'
