@@ -2,6 +2,7 @@ class LocationsController < ApplicationController
 	before_action :must_be_logged_in, except: [:index]
 	before_action :current_user, only: [:index]
 	before_action :must_be_admin, except: [:index, :show]
+	before_action :assign_location, only: [:edit, :update]
 
 	def index
 		if params[:zip].present?
@@ -33,11 +34,16 @@ class LocationsController < ApplicationController
 	end
 
 	def edit
-		@location = Location.find(params[:id])
 	end
 
 	def update
+		@location.update(location_params)
 
+		if @location.valid?
+			redirect_to location_path(@location)
+		else
+			redirect_to edit_location_path
+		end
 	end
 
 	def destroy
@@ -54,6 +60,10 @@ class LocationsController < ApplicationController
 			:state,
 			:zip
 			)
+	end
+
+	def assign_location
+		@location = Location.find(params[:id])
 	end
 
 end

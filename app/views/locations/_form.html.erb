@@ -1,0 +1,42 @@
+<div class="columns">
+	<div class="column is-one-third">
+
+		<%= render partial: "/layouts/error", locals: {error_object: @location} %>	
+
+		<div class="field ">
+			<%= form_for @location do |f| %>
+				<label class="label">Name</label>
+				<div class="control">
+					<%= f.text_field :name, placeholder:"Comics R' Us", class: "input" %>					
+				</div>
+
+				<label class= "label">Address 1</label>
+				<div class="control">			
+					<%= f.text_field 'address_1', placeholder: '123 Smith St.', class: "input" %>		
+				</div>
+
+				<label class= "label">Address 2</label>
+				<div class="control">			
+					<%= f.text_field 'address_2', placeholder: 'Room A', class: "input" %>		
+				</div>
+
+				<label class= "label">City</label>
+				<div class="control">	
+					<%= f.text_field 'city', placeholder: 'New York', class: "input" %>
+				</div>
+
+				<label class= "label">State</label>
+				<div class="control">			
+					<%= f.text_field 'state', placeholder: 'NY', class: "input" %>		
+				</div>
+
+
+				<label class= "label">Zip</label>
+				<div class="control">			
+					<%= f.text_field 'zip', placeholder: '12345', class: "input" %>		
+				</div><br>
+				<%= f.submit 'Submit', class: "button" %>
+			<% end %>
+		</div>
+	</div>
+</div>

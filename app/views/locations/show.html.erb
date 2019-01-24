@@ -2,6 +2,10 @@
 
 <p class="subtitle is-6"><%= @location.address %></p>
 
+<% if @current_user.admin %>
+	<%= button_to("Edit #{@location.name}", edit_location_path(@location), method: :get, class: "button is-warning") %>
+<% end %><br>
+
 <ul>
 	<p class="title is-4">Meet ups</p>
 	<% @location.meet_ups.each do |meet_up| %>
