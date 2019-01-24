@@ -1,5 +1,5 @@
 class LocationsController < ApplicationController
-	before_action :must_be_logged_in, except: [:index]
+	before_action :must_be_logged_in
 	before_action :current_user, only: [:index]
 	before_action :must_be_admin, except: [:index, :show]
 	before_action :assign_location, only: [:show, :edit, :update, :destroy]
@@ -28,7 +28,7 @@ class LocationsController < ApplicationController
 		if @location.valid?
 			redirect_to location_path(@location)		
 		else
-			render new_location_path
+			render :new
 		end
 	end
 
@@ -41,7 +41,7 @@ class LocationsController < ApplicationController
 		if @location.valid?
 			redirect_to location_path(@location)
 		else
-			redirect_to edit_location_path
+			render :edit
 		end
 	end
 

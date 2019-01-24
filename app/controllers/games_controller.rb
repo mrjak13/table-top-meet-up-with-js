@@ -1,5 +1,5 @@
 class GamesController < ApplicationController
-	before_action :must_be_logged_in, except: [:index]
+	before_action :must_be_logged_in
 	before_action :current_user
 	before_action :must_be_admin, except: [:index, :show]
 	before_action :assign_game, only: [:show, :edit, :update, :destroy]
@@ -26,7 +26,7 @@ class GamesController < ApplicationController
 		if @game.valid?
 			redirect_to game_path(@game)
 		else
-			render new_game_path
+			render :new
 		end
 	end
 
@@ -39,7 +39,7 @@ class GamesController < ApplicationController
 		if @game.valid?
 			redirect_to game_path(@game)
 		else
-			redirect_to edit_game_path
+			render :edit
 		end
 	end
 

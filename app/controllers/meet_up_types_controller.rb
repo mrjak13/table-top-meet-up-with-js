@@ -1,5 +1,5 @@
 class MeetUpTypesController < ApplicationController
-	before_action :must_be_logged_in, except: [:index]
+	before_action :must_be_logged_in
 	before_action :current_user, only: [:index, :show]
 	before_action :must_be_admin, except: [:index]
 	before_action :assign_meet_up_type, only: [:show, :edit, :update, :destroy]
@@ -20,7 +20,7 @@ class MeetUpTypesController < ApplicationController
 		if @meet_up_type.valid?
 			redirect_to meet_up_type_path(@meet_up_type)
 		else
-			render new_meet_up_type_path
+			render :new
 		end
 	end
 
@@ -32,7 +32,7 @@ class MeetUpTypesController < ApplicationController
 		if @meet_up_type.valid?
 			redirect_to meet_up_type_path(@meet_up_type)
 		else
-			redirect_to edit_meet_up_type_path
+			render :edit
 		end
 	end
 

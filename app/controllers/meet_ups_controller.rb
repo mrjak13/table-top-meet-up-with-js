@@ -1,9 +1,9 @@
 class MeetUpsController < ApplicationController
-	before_action :must_be_logged_in, except: [:index]
+	before_action :must_be_logged_in
 	before_action :create_date_time, only: [:create, :update]
 	before_action :must_be_admin, except:[:index, :show]
 	before_action :assign_meet_up, only: [:show, :edit, :update, :destroy]
-	before_action :assign_games_and_types, only: [:new, :edit]
+	before_action :assign_games_and_types, only: [:new, :edit, :update]
 
 	
 	def index
@@ -32,7 +32,7 @@ class MeetUpsController < ApplicationController
 		if @meet_up.valid?			
 			redirect_to meet_up_path(@meet_up)
 		else
-			render new_meet_up_path
+			render :new
 		end
 	end
 
@@ -45,7 +45,7 @@ class MeetUpsController < ApplicationController
 		if @meet_up.valid?
 			redirect_to meet_up_path(@meet_up)
 		else
-			redirect_to edit_meet_up_path
+			render :edit
 		end
 	end
 

@@ -1,14 +1,14 @@
 <div class="columns">
 	<div class="column is-one-third">
 
-		<%= render partial: "/layouts/error", locals: {error_object: form_object} %>
+		 <%= render partial: "/layouts/error", locals: {error_object: form_object} %>
 
 		<div class="field">
 			<%= form_for form_object do |f| %>
-			
+
 				<label class="label">Name</label>
 				<div class="control">
-					<%= f.text_field :name, placeholder:"Monopoly", class: "input" %>
+					<%= f.text_field :name, placeholder:"Monopoly", class: "form-control input" %>
 				</div>
 
 				<div class="columns">
