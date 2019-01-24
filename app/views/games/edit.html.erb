@@ -1,1 +1,3 @@
-<h1>Edit <%= @game.name %> here!</h1>
+<h1 class="title">Edit <%= @game.name %></h1>
+
+<%= render partial: "form", locals: {form_object: @game} %>
