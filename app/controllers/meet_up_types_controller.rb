@@ -1,7 +1,7 @@
 class MeetUpTypesController < ApplicationController
 	before_action :must_be_logged_in
 	before_action :current_user, only: [:index, :show]
-	before_action :must_be_admin, except: [:index]
+	before_action :must_be_admin, except: [:index, :show]
 	before_action :assign_meet_up_type, only: [:show, :edit, :update, :destroy]
 
 	def index

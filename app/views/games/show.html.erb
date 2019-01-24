@@ -1,9 +1,10 @@
 <h1 class="title"><%= @game.name %>
 	<% if @user_game.present? && @user_game.favorite == true %>
 		<i class="fas fa-star" style="color:gold"></i>
+		<br><br>
 		<%= button_to("Remove from favorites", user_game_path(@user_game), method: :patch, class: "button") %>
 	<% elsif @user_game.present? && @user_game.favorite == false %>
-		<br>
+		<br><br>
 		<%= button_to("Add to favorites", user_game_path(@user_game), method: :patch, class: "button") %>
 	<% end %>
 </h1>

@@ -3,7 +3,10 @@ class UsersController < ApplicationController
 	before_action :cant_be_logged_in, only: [:new, :create]
 	before_action :must_be_admin, only: [:index, :destroy]
 
+
+	# will use for admin function / to assign roles in the future
 	def index
+		redirect_to user_path(@current_user)
 		@users = User.all
 	end
 

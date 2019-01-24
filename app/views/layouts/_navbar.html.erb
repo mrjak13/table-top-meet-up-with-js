@@ -1,26 +1,28 @@
 <nav class="navbar" role="navigation" aria-label="main navigation">
   <div class="navbar-brand">
-    <a class="navbar-item button is-text is-large is-info is-inverted">
+    <a class="navbar-item button is-text is-large is-info is-inverted" href="/">
         <i class="fas fa-dice"></i>
     </a>
 
-    <div id="navbarBasicExample" class="navbar-menu">
-      <div class="navbar-start">
-        <% if session[:user_id].present? %>
-          <%= link_to "Profile", user_path(session[:user_id]),{class: "navbar-item"} %>
-        <% end %>
-        <div class="navbar-item has-dropdown is-hoverable">
-          <a class="navbar-link">Meet ups</a>
-            <div class="navbar-dropdown">
-              <%= link_to "All", meet_ups_path, {class: "navbar-item"}%>
-              <%= link_to "Type", meet_up_types_path, {class: "navbar-item"} %>        
-            </div>
+    <% if session[:user_id].present? %>
+      <div id="navbarBasicExample" class="navbar-menu">
+        <div class="navbar-start">
+          <% if session[:user_id].present? %>
+            <%= link_to "Profile", user_path(session[:user_id]),{class: "navbar-item"} %>
+          <% end %>
+          <div class="navbar-item has-dropdown is-hoverable">
+            <a class="navbar-link">Meet ups</a>
+              <div class="navbar-dropdown">
+                <%= link_to "All", meet_ups_path, {class: "navbar-item"}%>
+                <%= link_to "Type", meet_up_types_path, {class: "navbar-item"} %>        
+              </div>
+          </div>
+          
+          <%= link_to "Games", games_path, {class: "navbar-item"} %>  
+          <%= link_to "Locations", locations_path, {class: "navbar-item"} %>  
         </div>
-        
-        <%= link_to "Games", games_path, {class: "navbar-item"} %>  
-        <%= link_to "Locations", locations_path, {class: "navbar-item"} %>  
       </div>
-    </div>
+    <% end %>
     <a role="button" class="navbar-burger burger" aria-label="menu" aria-expanded="false" data-target="navbarBasicExample">
       <span aria-hidden="true"></span>
       <span aria-hidden="true"></span>

@@ -3,7 +3,7 @@ class MeetUpsController < ApplicationController
 	before_action :create_date_time, only: [:create, :update]
 	before_action :must_be_admin, except:[:index, :show]
 	before_action :assign_meet_up, only: [:show, :edit, :update, :destroy]
-	before_action :assign_games_and_types, only: [:new, :edit, :update]
+	before_action :assign_games_and_types, only: [:new, :create, :edit, :update]
 
 	
 	def index
@@ -41,7 +41,7 @@ class MeetUpsController < ApplicationController
 
 	def update
 		@meet_up.update(meet_up_params)
-
+		@meet_up.update(date: @date_time, time: @date_time)
 		if @meet_up.valid?
 			redirect_to meet_up_path(@meet_up)
 		else
