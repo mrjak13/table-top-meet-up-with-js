@@ -32,10 +32,10 @@
               <%= link_to "Locations", locations_path, {class: "navbar-item"} %>  
 
             <div class="buttons">
-              <%= button_to("Log out", logout_path, method: :delete, class: "button is-dark") %>            
+              <%= button_to("Log out", logout_path, method: :delete, class: "button has-text-danger is-dark") %>            
             <% else %>         
               <%= link_to "Sign up", signup_path, {class: "button is-info"} %>
-              <%= link_to "Log in", login_path, {class: "button is-light"} %>
+              <%= link_to "Log in", login_path, {class: "button has-text-success is-dark"} %>
             </div>
             <% end %>
           </div>
@@ -44,4 +44,4 @@
     </nav>
   </div>
 </div>
-    <br>
+<br>
