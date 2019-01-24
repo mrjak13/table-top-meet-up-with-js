@@ -1,3 +1,7 @@
 <h1 class="title"><%= @meet_up_type.name %></h1>
 
-<p class="subtitle"><%= @meet_up_type.description %></p>
+<p class="subtitle"><%= @meet_up_type.description %></p><br>
+
+<% if @current_user.admin %>
+	<%= button_to("Edit #{@meet_up_type.name}", edit_meet_up_type_path(@meet_up_type), method: :get, class: "button is-warning") %>
+<% end %>

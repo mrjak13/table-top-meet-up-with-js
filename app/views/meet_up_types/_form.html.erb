@@ -1,0 +1,22 @@
+<div class="columns">
+	<div class="column is-one-third">
+
+		<%= render partial: "/layouts/error", locals: {error_object: form_object} %>
+		
+		<div class="field ">
+			<%= form_for form_object do |f| %>
+				<label class="label">Name</label>
+				<div class="control">
+					<%= f.text_field :name, placeholder:"Beginner", class: "input" %>
+				</div>
+
+				<label class= "label">Description</label>
+				<div class="control">			
+					<%= f.text_area 'description', placeholder:"New to the scene or getting back into it.", class: "textarea" %>			
+				</div><br>
+
+				<%= submit_tag 'Submit', class: "button" %>
+			<% end %>
+		</div>
+	</div>
+</div>

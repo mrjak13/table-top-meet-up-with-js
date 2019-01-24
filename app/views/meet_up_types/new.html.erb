@@ -1,24 +1,3 @@
-
-<div class="columns">
-	<div class="column is-one-third">
 <h1 class="title">Create new Meet up Type</h1>
 
-		<%= render partial: "/layouts/error", locals: {error_object: @meet_up_type} %>
-		
-		<div class="field ">
-			<%= form_for @meet_up_type do |f| %>
-				<label class="label">Name</label>
-				<div class="control">
-					<%= f.text_field :name, placeholder:"Beginner", class: "input" %>
-				</div>
-
-				<label class= "label">Description</label>
-				<div class="control">			
-					<%= f.text_area 'description', placeholder:"New to the scene or getting back into it.", class: "textarea" %>			
-				</div><br>
-
-				<%= submit_tag 'Submit', class: "button" %>
-			<% end %>
-		</div>
-	</div>
-</div>
+<%= render partial: "form", locals: {form_object: @meet_up_type} %>
