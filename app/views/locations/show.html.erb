@@ -2,9 +2,16 @@
 
 <p class="subtitle is-6"><%= @location.address %></p>
 
-<% if @current_user.admin %>
-	<%= button_to("Edit #{@location.name}", edit_location_path(@location), method: :get, class: "button is-warning") %>
-<% end %><br>
+<div class="field is-grouped">
+	<% if @current_user.admin %>
+		<p class="control">
+			<%= button_to("Edit #{@location.name}", edit_location_path(@location), method: :get, class: "button is-warning") %>
+		</p>
+		<p class="control">
+			<%= button_to("Delete #{@location.name}", location_path(@location), method: :delete, class: "button is-danger") %>
+		</p>
+	<% end %><br>
+</div>
 
 <ul>
 	<p class="title is-4">Meet ups</p>

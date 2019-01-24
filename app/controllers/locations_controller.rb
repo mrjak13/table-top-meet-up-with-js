@@ -2,7 +2,7 @@ class LocationsController < ApplicationController
 	before_action :must_be_logged_in, except: [:index]
 	before_action :current_user, only: [:index]
 	before_action :must_be_admin, except: [:index, :show]
-	before_action :assign_location, only: [:show, :edit, :update]
+	before_action :assign_location, only: [:show, :edit, :update, :destroy]
 
 	def index
 		if params[:zip].present?
@@ -46,6 +46,9 @@ class LocationsController < ApplicationController
 	end
 
 	def destroy
+		@location.delete
+		flash[:message] = "Location deleted"
+		redirect_to locations_path
 	end
 
 	private
