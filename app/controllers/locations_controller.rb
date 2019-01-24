@@ -1,14 +1,15 @@
 class LocationsController < ApplicationController
 	before_action :must_be_logged_in, except: [:index]
+	before_action :current_user, only: [:index]
+	before_action :must_be_admin, except: [:index, :show]
 
 	def index
 		if params[:zip].present?
 			@locations = Location.near_me(params[:zip])
-			# flash message lasts an extra click
-			# if @locations.empty?
-			# 	flash[:message] = "No locations with that zip"
-			# 	params.delete :zip
-			# end
+			if @locations.empty?
+				flash.now[:message] = "No locations with that zip"
+				params.delete :zip
+			end
 		else
 			@locations = Location.all
 		end

@@ -1,5 +1,8 @@
 class MeetUpsController < ApplicationController
 	before_action :must_be_logged_in, except: [:index]
+	before_action :create_date_time, only: [:create, :update]
+	before_action :must_be_admin, except:[:index, :show]
+
 	
 	def index
 		@meet_ups = MeetUp.all
@@ -17,8 +20,9 @@ class MeetUpsController < ApplicationController
 		@meet_up_types = MeetUpType.all		
 		if params[:location_id].present?		
 			@location = Location.find(params[:location_id])	
-		# else
-		# 	redirect_to user_path(current_user)
+		else
+			flash[:message] = "You can't do that"
+			redirect_to user_path(current_user)
 		end	
 	end
 

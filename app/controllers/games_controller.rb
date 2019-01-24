@@ -1,8 +1,10 @@
 class GamesController < ApplicationController
 	before_action :must_be_logged_in, except: [:index]
+	before_action :current_user
+	before_action :must_be_admin, except: [:index, :show]
 
 	def index
-		current_user
+		# current_user
 		if params[:user_id].present?
 			@games = current_user.games
 		else
@@ -11,7 +13,7 @@ class GamesController < ApplicationController
 	end
 
 	def show
-		current_user
+		# current_user
 		@game = Game.find(params[:id])
 		@user_game = UserGame.find_by(user_id: @current_user.id, game_id: @game.id)
 	end

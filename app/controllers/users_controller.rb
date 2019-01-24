@@ -1,6 +1,7 @@
 class UsersController < ApplicationController
 	before_action :must_be_logged_in, except: [:new, :create]
 	before_action :cant_be_logged_in, only: [:new, :create]
+	before_action :must_be_admin, only: [:index, :destroy]
 
 	def index
 		@users = User.all
@@ -24,13 +25,14 @@ class UsersController < ApplicationController
 		end
 	end
 
-	def edit
+	# will keep so users can update their info in the future
+	# def edit
 
-	end
+	# end
 
-	def update		
+	# def update		
 
-	end
+	# end
 
 	def destroy
 	end

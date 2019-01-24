@@ -1,5 +1,8 @@
 class MeetUpTypesController < ApplicationController
 	before_action :must_be_logged_in, except: [:index]
+	before_action :current_user, only: [:index]
+	before_action :must_be_admin, except: [:index]
+
 	def index
 		@meet_up_types = MeetUpType.all
 	end

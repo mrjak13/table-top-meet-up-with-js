@@ -22,4 +22,15 @@ class ApplicationController < ActionController::Base
         end
     end
 
+    def user_is_admin?
+        current_user.admin
+    end
+
+    def must_be_admin
+        if !user_is_admin?
+            flash[:message] = "You don't have permission to do that"
+            redirect_to user_path(current_user)
+        end
+    end
+
 end
