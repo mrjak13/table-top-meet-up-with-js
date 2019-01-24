@@ -16,4 +16,7 @@
 			</div>
 		<% end %>
 	</li>
-</ul>
+</ul><br>
+
+<%= render partial: "/layouts/admin", locals: {admin_object: @locations.first.class.name.downcase} %>	
+

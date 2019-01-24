@@ -4,4 +4,10 @@
 	<% @meet_up_types.each do |meet_up_type| %>
 		<li class="subtitle"><%= link_to meet_up_type.name, meet_up_type_path(meet_up_type) %></li>
 	<% end %>
-</ul>
+</ul><br>
+
+<% if @current_user.admin %>
+	<%= button_to("New meet up type", new_meet_up_type_path, method: "get", class: "button is-warning") %>
+<% end %>
+
+

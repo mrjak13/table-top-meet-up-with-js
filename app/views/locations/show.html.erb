@@ -9,4 +9,6 @@
 	<% end %>
 </ul><br>
 
-<%= button_to("Create meet up",  new_location_meet_up_path(@location), method: "get", class: "button") %>
+<% if @current_user.admin %>
+	<%= button_to("Create meet up",  new_location_meet_up_path(@location), method: "get", class: "button is-warning") %>
+<% end %>
