@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
 
+  # google omniauth route
   get '/auth/google_oauth2/callback' => 'sessions#create'
  
   # session routes
