@@ -2,7 +2,7 @@ class LocationsController < ApplicationController
 	before_action :must_be_logged_in, except: [:index]
 	before_action :current_user, only: [:index]
 	before_action :must_be_admin, except: [:index, :show]
-	before_action :assign_location, only: [:edit, :update]
+	before_action :assign_location, only: [:show, :edit, :update]
 
 	def index
 		if params[:zip].present?
@@ -17,7 +17,6 @@ class LocationsController < ApplicationController
 	end
 
 	def show
-		@location = Location.find(params[:id])
 	end
 
 	def new

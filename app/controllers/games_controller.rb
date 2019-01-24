@@ -2,7 +2,7 @@ class GamesController < ApplicationController
 	before_action :must_be_logged_in, except: [:index]
 	before_action :current_user
 	before_action :must_be_admin, except: [:index, :show]
-	before_action :assign_game, only: [:edit, :update]
+	before_action :assign_game, only: [:show, :edit, :update]
 
 	def index
 		if params[:user_id].present?
