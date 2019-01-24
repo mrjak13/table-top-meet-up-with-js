@@ -2,7 +2,7 @@ class MeetUpTypesController < ApplicationController
 	before_action :must_be_logged_in, except: [:index]
 	before_action :current_user, only: [:index, :show]
 	before_action :must_be_admin, except: [:index]
-	before_action :assign_meet_up_type, only: [:show, :edit, :update]
+	before_action :assign_meet_up_type, only: [:show, :edit, :update, :destroy]
 
 	def index
 		@meet_up_types = MeetUpType.all
@@ -37,6 +37,9 @@ class MeetUpTypesController < ApplicationController
 	end
 
 	def destroy
+		@meet_up_type.delete
+		flash[:message] = "Meet up type deleted"
+		redirect_to meet_up_types_path
 	end
 
 	private

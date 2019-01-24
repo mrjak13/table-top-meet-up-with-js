@@ -2,6 +2,13 @@
 
 <p class="subtitle"><%= @meet_up_type.description %></p><br>
 
-<% if @current_user.admin %>
-	<%= button_to("Edit #{@meet_up_type.name}", edit_meet_up_type_path(@meet_up_type), method: :get, class: "button is-warning") %>
-<% end %>
+<div class="field is-grouped">
+	<% if @current_user.admin %>
+	<p class="control">
+		<%= button_to("Edit #{@meet_up_type.name}", edit_meet_up_type_path(@meet_up_type), method: :get, class: "button is-warning") %>
+	</p>
+	<p class="control">
+		<%= button_to("Delete #{@meet_up_type.name}", meet_up_type_path(@meet_up_type), method: :delete, class: "button is-danger") %>
+	</p>
+	<% end %>
+</div>
