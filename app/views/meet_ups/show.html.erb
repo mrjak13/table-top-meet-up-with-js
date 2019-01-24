@@ -15,6 +15,14 @@
 		<%= button_to("add to my meet ups", meet_up_user_meet_ups_path(@meet_up), method: "post", class: "button") %>
 	<% end %><br>
 
+
+<div class="field is-grouped">
 	<% if @current_user.admin %>
+	<p class="control">
 		<%= button_to("Edit #{@meet_up.name}", edit_meet_up_path(@meet_up), method: :get, class: "button is-warning") %>
+	</p>
+	<p class="control">
+		<%= button_to("Delete #{@meet_up.name}", meet_up_path(@meet_up), method: :delete, class: "button is-danger") %>
+	</p>
 	<% end %>
+</div>

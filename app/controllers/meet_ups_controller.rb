@@ -2,7 +2,7 @@ class MeetUpsController < ApplicationController
 	before_action :must_be_logged_in, except: [:index]
 	before_action :create_date_time, only: [:create, :update]
 	before_action :must_be_admin, except:[:index, :show]
-	before_action :assign_meet_up, only: [:show, :edit, :update]
+	before_action :assign_meet_up, only: [:show, :edit, :update, :destroy]
 	before_action :assign_games_and_types, only: [:new, :edit]
 
 	
@@ -50,6 +50,9 @@ class MeetUpsController < ApplicationController
 	end
 
 	def destroy
+		@meet_up.delete
+		flash[:message] = "Meet up deleted"
+		redirect_to meet_ups_path
 	end
 
 	private
