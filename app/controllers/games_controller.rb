@@ -2,7 +2,7 @@ class GamesController < ApplicationController
 	before_action :must_be_logged_in, except: [:index]
 	before_action :current_user
 	before_action :must_be_admin, except: [:index, :show]
-	before_action :assign_game, only: [:show, :edit, :update]
+	before_action :assign_game, only: [:show, :edit, :update, :destroy]
 
 	def index
 		if params[:user_id].present?
@@ -44,6 +44,9 @@ class GamesController < ApplicationController
 	end
 
 	def destroy
+		@game.destroy
+		flash[:message] = "Game deleted"
+		redirect_to games_path
 	end
 
 	private
