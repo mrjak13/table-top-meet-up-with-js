@@ -2,6 +2,8 @@ class MeetUpsController < ApplicationController
 	before_action :must_be_logged_in, except: [:index]
 	before_action :create_date_time, only: [:create, :update]
 	before_action :must_be_admin, except:[:index, :show]
+	before_action :assign_meet_up, only: [:show, :edit, :update]
+	before_action :assign_games_and_types, only: [:new, :edit]
 
 	
 	def index
@@ -10,14 +12,11 @@ class MeetUpsController < ApplicationController
 
 	def show
 		current_user
-		@meet_up = MeetUp.find(params[:id])
 		@user_meet_up = UserMeetUp.find_by(user_id: @current_user, meet_up_id: @meet_up)
 	end
 
 	def new
-		@meet_up = MeetUp.new	
-		@games = Game.all
-		@meet_up_types = MeetUpType.all		
+		@meet_up = MeetUp.new		
 		if params[:location_id].present?		
 			@location = Location.find(params[:location_id])	
 		else
@@ -27,10 +26,7 @@ class MeetUpsController < ApplicationController
 	end
 
 	def create		
-		create_date_time
-		@games = Game.all
-		@location = Location.find(params[:location_id])
-		@meet_up_types = MeetUpType.all	
+		@location = Location.find(params[:location_id])	
 		@meet_up = MeetUp.new(meet_up_params)
 		@meet_up.update(date: @date_time, time: @date_time, location_id: @location.id)		
 		if @meet_up.valid?			
@@ -41,10 +37,16 @@ class MeetUpsController < ApplicationController
 	end
 
 	def edit
-		@meet_up = MeetUp.find(params[:id])
 	end
 
 	def update
+		@meet_up.update(meet_up_params)
+
+		if @meet_up.valid?
+			redirect_to meet_up_path(@meet_up)
+		else
+			redirect_to edit_meet_up_path
+		end
 	end
 
 	def destroy
@@ -69,5 +71,14 @@ class MeetUpsController < ApplicationController
 		minute = params[:meet_up]["time(5i)"].to_i
 
 		@date_time = DateTime.new(year, month, day, hour, minute)
+	end
+
+	def assign_meet_up
+		@meet_up = MeetUp.find(params[:id])
+	end
+
+	def assign_games_and_types
+		@games = Game.all
+		@meet_up_types = MeetUpType.all	
 	end
 end

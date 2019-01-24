@@ -13,4 +13,8 @@
 		<%= button_to("remove from my meet ups", user_meet_up_path(@user_meet_up), method: :delete, class: "button is-danger") %>
 	<% else %>
 		<%= button_to("add to my meet ups", meet_up_user_meet_ups_path(@meet_up), method: "post", class: "button") %>
+	<% end %><br>
+
+	<% if @current_user.admin %>
+		<%= button_to("Edit #{@meet_up.name}", edit_meet_up_path(@meet_up), method: :get, class: "button is-warning") %>
 	<% end %>
