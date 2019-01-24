@@ -1,5 +1,8 @@
 Rails.application.routes.draw do
 
+  # welcome page
+  root 'welcome#index'
+
   # google omniauth route
   get '/auth/google_oauth2/callback' => 'sessions#create'
  
@@ -8,14 +11,16 @@ Rails.application.routes.draw do
   post '/login' => 'sessions#create'
   delete '/logout' => 'sessions#destroy'  
 
-
+  # user routes
   resources :users, except: [:create]
 
   get '/signup' => 'users#new'
   post '/signup' => 'users#create'
 
+  # meet up type routes
   resources :meet_up_types
 
+  # join tables routes
   resources :user_meet_ups, only: [:destroy]
 
   resources :user_games, only: [:update, :destroy]
