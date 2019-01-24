@@ -1,10 +1,10 @@
 <h1 class="title"><%= @game.name %>
 	<% if @user_game.present? && @user_game.favorite == true %>
 		<i class="fas fa-star" style="color:gold"></i>
-		<%= button_to("remove from favorites", user_game_path(@user_game), method: :patch, class: "button") %>
+		<%= button_to("Remove from favorites", user_game_path(@user_game), method: :patch, class: "button") %>
 	<% elsif @user_game.present? && @user_game.favorite == false %>
 		<br>
-		<%= button_to("add to favorites", user_game_path(@user_game), method: :patch, class: "button") %>
+		<%= button_to("Add to favorites", user_game_path(@user_game), method: :patch, class: "button") %>
 	<% end %>
 </h1>
 
@@ -20,9 +20,12 @@ Play Time: <%= @game.play_time %><br>
 	<p class="has-text-danger"><strong>Warning!</strong> Contains mature content!</p>
 <% end %><br>
 
-
 <% if @current_user.games.include?(@game) %>
-	<%= button_to("remove from my games", user_game_path(@user_game), method: :delete, class: "button is-danger") %>
+	<%= button_to("Remove from my games", user_game_path(@user_game), method: :delete, class: "button is-danger") %>
 <% else %>	
-	<%= button_to("add to my games", game_user_games_path(@game), class: "button") %>
+	<%= button_to("Add to my games", game_user_games_path(@game), class: "button") %>
+<% end %><br><br>
+
+<% if @current_user.admin %>
+	<%= button_to("Edit #{@game.name}", edit_game_path(@game), method: :get, class: "button is-warning") %>
 <% end %>

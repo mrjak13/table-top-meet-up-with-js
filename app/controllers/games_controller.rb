@@ -2,9 +2,9 @@ class GamesController < ApplicationController
 	before_action :must_be_logged_in, except: [:index]
 	before_action :current_user
 	before_action :must_be_admin, except: [:index, :show]
+	before_action :assign_game, only: [:edit, :update]
 
 	def index
-		# current_user
 		if params[:user_id].present?
 			@games = current_user.games
 		else
@@ -13,7 +13,6 @@ class GamesController < ApplicationController
 	end
 
 	def show
-		# current_user
 		@game = Game.find(params[:id])
 		@user_game = UserGame.find_by(user_id: @current_user.id, game_id: @game.id)
 	end
@@ -32,10 +31,16 @@ class GamesController < ApplicationController
 	end
 
 	def edit
-		@game = Game.find(params[:id])
 	end
 
 	def update
+		@game.update(games_params)
+
+		if @game.valid?
+			redirect_to game_path(@game)
+		else
+			redirect_to edit_game_path
+		end
 	end
 
 	def destroy
@@ -52,5 +57,9 @@ class GamesController < ApplicationController
 			:play_time,
 			:mature_content
 			)
+	end
+
+	def assign_game
+		@game = Game.find(params[:id])
 	end
 end
