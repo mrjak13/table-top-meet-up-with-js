@@ -1,7 +1,18 @@
 <h1 class="title">Meet Ups</h1>
 
-<ul>
-	<% @meet_ups.each do |meet_up| %>
-		<li class="subtitle"><%= link_to meet_up.name, meet_up_path(meet_up) %></li>
-	<% end %>
-</ul>
+<div class="columns">
+	<div class="column">
+		<ul>
+			<% @meet_ups.each do |meet_up| %>
+				<li class="subtitle"><%= link_to meet_up.name, meet_up_path(meet_up) %></li>
+			<% end %>
+		</ul>			
+	</div>
+
+	<div class="column">
+		<ul id="ajax-list-locations">
+			
+		</ul>
+		<button id="ajax-get-locations" class="button">Get Locations</button>
+	</div>
+</div>
