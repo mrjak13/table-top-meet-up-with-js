@@ -1,5 +1,6 @@
 
 $(function () {
+	console.log('loaded locations.js...')
 	locationsClick();	
 })
 
