@@ -6,6 +6,10 @@ ruby '2.5.3'
 gem 'omniauth'
 gem 'omniauth-google-oauth2'
 
+gem 'active_model_serializers'
+
+gem 'jquery-rails'
+
 gem 'dotenv-rails'
 
 gem 'access-granted', '~> 1.1.0'
