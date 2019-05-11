@@ -34,7 +34,11 @@ class LocationsController < ApplicationController
 	def create		
 		@location = Location.create(location_params)
 		if @location.valid?
-			redirect_to location_path(@location)		
+			respond_to do |format|
+				format.html {redirect_to location_path(@location)}
+				format.json {render json: @location, status: 201}
+			end
+			# redirect_to location_path(@location)		
 		else
 			render :new
 		end
