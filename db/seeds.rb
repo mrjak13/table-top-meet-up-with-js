@@ -24,7 +24,7 @@ local_3 = Location.create(name: "Bob's Place", address_1: "1 First Ave.", addres
 
 casual = MeetUpType.create(name: "Casual", description: "Casual gaming: nothing too serious, just fun.  Great for anyone interested in starting to get into tabletop games.")
 competitive = MeetUpType.create(name: "Competitive", description: "Competitive gaming: Better bring your A-Game to this session.")
-social = MeetUpType.create(name: "Socail", description: "Socail gaming: Come, bring your friends, and make some new ones!")
+social = MeetUpType.create(name: "Social", description: "Socail gaming: Come, bring your friends, and make some new ones!")
 party = MeetUpType.create(name: "Party", description: "Party gaming: Party games! Lots of people, even more fun!")
 nsfk = MeetUpType.create(name: "Not Safe For kids", description: "Leave the kids at home. Dark games, with darker humor.")
 
