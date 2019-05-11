@@ -21,6 +21,10 @@ class LocationsController < ApplicationController
 	end
 
 	def show
+		respond_to do |format|
+			format.html {render :index}
+			format.json {render json: @location}
+		end
 	end
 
 	def new
