@@ -14,6 +14,8 @@
 
 //= require rails-ujs
 //= require activestorage
-//= require turbolinks
+
 //= require_tree .
 
+
+ // requiring turbolinks causes bug that that fails top load JS

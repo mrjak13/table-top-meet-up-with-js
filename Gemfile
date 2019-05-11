@@ -12,6 +12,8 @@ gem 'jquery-rails'
 
 gem 'dotenv-rails'
 
+gem 'pry'
+
 gem 'access-granted', '~> 1.1.0'
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
