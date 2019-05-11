@@ -1,21 +1,19 @@
 
 $(function () {
-	console.log('loaded locations.js...')
 	locationsClick();	
 })
 
 function locationsClick() {
 	$('button#ajax-get-locations').on('click', function(event){
 		event.preventDefault();
-		console.log('clicked a thing in my project woo!');
 		getLocation();
-		rmvButton();
+		changeButton();
 	})
 }
 
 function getLocation() {
 	// 
-	// COULD NOT GET AJAX REQUEST TO WORK W/O .JSON.. TRY WITH MEET UP TYPES 
+	// COULD NOT GET AJAX REQUEST TO WORK W/O .JSON
 	// 
 	// $.ajax({
 	// 	method: "GET",
@@ -35,12 +33,28 @@ function getLocation() {
 
 function locationHtml(location) {
 	return `
-	<li>
+	<li class="subtitle">
 		<a href="/locations/${location.id}">${location.name}</a>
-		<ul id="location id ${location.id}"><ul>
+		<li id="location-id-${location.id}"><li>
 	</li>`
 }
 
+
+function changeButton() {
+	rmvButton();
+	var newLocationButton = `
+	<a href="#" id="new-location-button" class="button is-warning">New Location</a>
+	`
+	$('div#location-button-div').append(newLocationButton)
+	newLocationFormClick();
+}
+
+function newLocationFormClick() {
+	$('a#new-location-button').on('click', function(e) {
+		e.preventDefault();
+
+	})
+}
 
 function rmvButton() {
 	$('button#ajax-get-locations').remove();
@@ -77,11 +91,11 @@ function Location(obj) {
 Location.prototype.formatHTML = function() {
 	return `
 	<p>${this.address_1}, ${this.city}, ${this.zip} ${this.address_2}</p>
+	<p>Number of events: <strong>${this.meetUps.length}</strong></p>
 	<br>
-	<p>Number of events<strong>${this.meetUps.length}</strong></p>
 	`
 }
 
 function addLocatoinHTMLToDom(id, html) {
-	debugger;
+	$(`#location-id-${id}`)[0].innerHTML = html
 }
