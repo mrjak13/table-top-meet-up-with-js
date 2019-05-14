@@ -28,17 +28,17 @@ class LocationsController < ApplicationController
 	end
 
 	def new
-		@location= Location.new
+		@location = Location.new
 	end
 
 	def create		
-		@location = Location.create(location_params)
-		if @location.valid?
+		@location = Location.new(location_params)
+	
+		if @location.save!
 			respond_to do |format|
-				format.html {redirect_to location_path(@location)}
-				format.json {render json: @location, status: 201}
-			end
-			# redirect_to location_path(@location)		
+				# format.html {redirect_to location_path(@location)}
+				format.json {render json: @location}
+			end			
 		else
 			render :new
 		end
