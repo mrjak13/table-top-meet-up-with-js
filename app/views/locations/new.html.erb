@@ -1,3 +1,15 @@
 <h1 class="title">Create new Location</h1>
 
-<%= render partial: "form", locals: {form_object: @location} %>	
+<div class="columns">
+	<%= render partial: "form", locals: {form_object: @location} %>	
+
+	<div class="column is-one-third">
+	</div>
+
+	<div class="column is-one-third">
+		<h1 class="subtitle">Recent Locations</h1>
+
+		<ul id="recent-locations">	
+		</ul>
+	</div>
+</div>
