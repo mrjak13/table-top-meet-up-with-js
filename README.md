@@ -27,7 +27,7 @@ $ git clone git@github.com:username/table-top-meet-up-with-js.git
 Change directory into the application.
 
 ```
-$ cd username/folder/table-top-meet-up-with-js.git
+$ cd username/folder/table-top-meet-up-with-js
 ```
 
 Install Gems.
